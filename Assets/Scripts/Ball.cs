@@ -1,16 +1,17 @@
+using System;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public static event Action SpawnedHoop = delegate { };
+
     private Rigidbody2D rb;
-    private CircleCollider2D col;
 
     public Vector3 Pos { get { return transform.position; } }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<CircleCollider2D>();
     }
 
     private void OnEnable()
@@ -50,5 +51,13 @@ public class Ball : MonoBehaviour
     private void InputManager_DesativatedRb()
     {
         DesactivateRb();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Net"))
+        {
+            SpawnedHoop();
+        }
     }
 }
