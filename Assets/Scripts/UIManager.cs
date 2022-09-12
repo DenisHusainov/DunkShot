@@ -8,11 +8,14 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         MainWindow.Started += MainWindow_Started;
+        MainWindow.OpenedBallsWindow += MainWindow_OpenedBallsWindow;
+        BallsWindow.OpenedMaonWindow += BallsWindow_OpenedMaonWindow;
     }
 
     private void OnDisable()
     {
         MainWindow.Started -= MainWindow_Started;
+        MainWindow.OpenedBallsWindow += MainWindow_OpenedBallsWindow;
     }
 
     private void Awake()
@@ -30,7 +33,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ShowWindow<T>() where T : Window
+    private void ShowWindow<T>() where T : Window
     {
         CloseWindows();
         var windowToShow = _windows.FirstOrDefault(x => x is T);
@@ -40,5 +43,15 @@ public class UIManager : MonoBehaviour
     private void MainWindow_Started()
     {
         ShowWindow<GameWindow>();
+    }
+
+    private void MainWindow_OpenedBallsWindow()
+    {
+        ShowWindow<BallsWindow>();
+    }
+
+    private void BallsWindow_OpenedMaonWindow()
+    {
+        ShowWindow<MainWindow>();
     }
 }

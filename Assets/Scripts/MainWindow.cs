@@ -5,17 +5,24 @@ using UnityEngine.UI;
 public class MainWindow : Window
 {
     public static event Action Started = delegate { };
+    public static event Action OpenedBallsWindow = delegate { };
 
-    [SerializeField]
-    private Button _startGameButton = null;
+    [SerializeField] private Button _startGameButton = null;
+    [SerializeField] private Button _changeBallsButton = null;
 
     private void Start()
     {
         _startGameButton.onClick.AddListener(OnStartGameButtonClicked);
+        _changeBallsButton.onClick.AddListener(OnChangeBallsButtonClicked);
     }
 
     private void OnStartGameButtonClicked()
     {
         Started();
+    }
+
+    private void OnChangeBallsButtonClicked()
+    {
+        OpenedBallsWindow();
     }
 }

@@ -232,9 +232,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hoop
       objectReference: {fileID: 0}
+    - target: {fileID: 2743541028292895046, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3207227082089815277, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
       propertyPath: m_TagString
       value: Net
+      objectReference: {fileID: 0}
+    - target: {fileID: 5303704255572980068, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0250534
+      objectReference: {fileID: 0}
+    - target: {fileID: 5303704255572980068, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.108057246
       objectReference: {fileID: 0}
     - target: {fileID: 8094572432957178711, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
       propertyPath: m_RootOrder
@@ -242,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8094572432957178711, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.36
+      value: 1.66
       objectReference: {fileID: 0}
     - target: {fileID: 8094572432957178711, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
       propertyPath: m_LocalPosition.y
@@ -280,7 +292,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1334174669607304191, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -321,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d878aaa85ae1a4cf6ab65d3ca5a40fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ballPos: {fileID: 1057832362}
+  _ball: {fileID: 1057832362}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -866,6 +879,10 @@ PrefabInstance:
     - target: {fileID: 2743541028292895046, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
       propertyPath: m_Name
       value: Hoop (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207227082089815277, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3207227082089815277, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
       propertyPath: m_TagString

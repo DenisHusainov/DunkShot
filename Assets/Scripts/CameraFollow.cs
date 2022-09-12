@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -9,6 +7,7 @@ public class CameraFollow : MonoBehaviour
     private void LateUpdate()
     {
         transform.position = new Vector3(transform.position.x,
-            Mathf.Lerp(transform.position.y, _ball.position.y + 2f, 0.03f), transform.position.z);
+            Mathf.Lerp(transform.position.y, _ball.position.y + 2f, 0.03f),
+            transform.position.z);
     }
 }
