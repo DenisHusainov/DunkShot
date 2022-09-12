@@ -26,7 +26,6 @@ public class InputManager : Singleton<InputManager>
     private void Start()
     {
         _cam = Camera.main;
-        //ball.DesactivateRb();
         DesativatedRb();
     }
 
@@ -51,11 +50,9 @@ public class InputManager : Singleton<InputManager>
 
     private void OnDragStart()
     {
-        //ball.DesactivateRb();
         DesativatedRb();
         _startPoint = _cam.ScreenToWorldPoint(Input.mousePosition);
 
-        //trajectory.Show();
         ShowedTrajectory();
     }
 
@@ -66,20 +63,15 @@ public class InputManager : Singleton<InputManager>
         _direction = (_startPoint - _endPoint).normalized;
         _force = _direction * _distance * _pushForce;
 
-        //trajectory.UpdateDots(ball.Pos, _force);
         UpdatedDots(ball.Pos, _force);
     }
 
     private void OnDragEnd()
     {
-        //ball.ActivareRb();
         AtivatedRb();
 
         ball.Push(_force);
 
-        //trajectory.Hide();
         HidedTrajectory();
-
-        //this.enabled = false;
     }
 }

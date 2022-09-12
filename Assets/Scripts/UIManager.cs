@@ -5,17 +5,32 @@ public class UIManager : MonoBehaviour
 {
     private Window[] _windows;
 
+    public static bool isPaused { get; private set; }
+
     private void OnEnable()
     {
         MainWindow.Started += MainWindow_Started;
         MainWindow.OpenedBallsWindow += MainWindow_OpenedBallsWindow;
-        BallsWindow.OpenedMaonWindow += BallsWindow_OpenedMaonWindow;
+        MainWindow.OpenedSettingsWindow += MainWindow_OpenedSettingsWindow;
+        BallsWindow.OpenedMainWindow += BallsWindow_OpenedMainWindow;
+        GameWindow.OpenedPauseWindow += GameWindow_OpenedPauseWindow;
+        PauseWindow.OpenedMainWindow += PauseWindow_OpenedMainWindow;
+        PauseWindow.OpenedBallsWindow += PauseWindow_OpenedBallsWindow;
+        PauseWindow.OpenedGameWindow += PauseWindow_OpenedGameWindow;
+
     }
 
     private void OnDisable()
     {
         MainWindow.Started -= MainWindow_Started;
-        MainWindow.OpenedBallsWindow += MainWindow_OpenedBallsWindow;
+        MainWindow.OpenedBallsWindow -= MainWindow_OpenedBallsWindow;
+        MainWindow.OpenedSettingsWindow -= MainWindow_OpenedSettingsWindow;
+        BallsWindow.OpenedMainWindow -= BallsWindow_OpenedMainWindow;
+        GameWindow.OpenedPauseWindow -= GameWindow_OpenedPauseWindow;
+        PauseWindow.OpenedMainWindow -= PauseWindow_OpenedMainWindow;
+        PauseWindow.OpenedBallsWindow -= PauseWindow_OpenedBallsWindow;
+        PauseWindow.OpenedGameWindow -= PauseWindow_OpenedGameWindow;
+
     }
 
     private void Awake()
@@ -47,11 +62,45 @@ public class UIManager : MonoBehaviour
 
     private void MainWindow_OpenedBallsWindow()
     {
+        isPaused = false;
         ShowWindow<BallsWindow>();
     }
 
-    private void BallsWindow_OpenedMaonWindow()
+    private void BallsWindow_OpenedMainWindow()
+    {
+        if (!isPaused)
+        {
+            ShowWindow<MainWindow>();
+        }
+        else
+        {
+            ShowWindow<PauseWindow>();
+        }
+    }
+
+    private void GameWindow_OpenedPauseWindow()
+    {
+        ShowWindow<PauseWindow>();
+    }
+
+    private void PauseWindow_OpenedMainWindow()
     {
         ShowWindow<MainWindow>();
+    }
+
+    private void PauseWindow_OpenedBallsWindow()
+    {
+        isPaused = true;
+        ShowWindow<BallsWindow>();
+    }
+
+    private void PauseWindow_OpenedGameWindow()
+    {
+        ShowWindow<GameWindow>();
+    }
+
+    private void MainWindow_OpenedSettingsWindow()
+    {
+        ShowWindow<SettingsWindow>();
     }
 }

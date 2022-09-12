@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class BallsWindow : Window
 {
-    public static event Action OpenedMaonWindow = delegate { };
+    public static event Action OpenedMainWindow = delegate { };
 
     [SerializeField] private Button _backButton = null;
 
@@ -15,6 +15,6 @@ public class BallsWindow : Window
 
     private void OnBackButtonClicked()
     {
-        OpenedMaonWindow();
+        OpenedMainWindow();
     }
 }
