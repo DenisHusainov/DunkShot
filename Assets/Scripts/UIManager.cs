@@ -11,26 +11,29 @@ public class UIManager : MonoBehaviour
     {
         MainWindow.Started += MainWindow_Started;
         MainWindow.OpenedBallsWindow += MainWindow_OpenedBallsWindow;
-        MainWindow.OpenedSettingsWindow += MainWindow_OpenedSettingsWindow;
-        BallsWindow.OpenedMainWindow += BallsWindow_OpenedMainWindow;
+        MainWindow.MainWindowOpenedSettingsWindow += OpenedSettingsWindow;
+        BallsWindow.BallsReturnedWindow += ReturnedWindow;
         GameWindow.OpenedPauseWindow += GameWindow_OpenedPauseWindow;
         PauseWindow.OpenedMainWindow += PauseWindow_OpenedMainWindow;
         PauseWindow.OpenedBallsWindow += PauseWindow_OpenedBallsWindow;
         PauseWindow.OpenedGameWindow += PauseWindow_OpenedGameWindow;
-
+        PauseWindow.PauseWindowOpenedSettingsWindow += OpenedSettingsWindow;
+        SettingsWindow.SettingsReturnedWindow += ReturnedWindow;
+        
     }
 
     private void OnDisable()
     {
         MainWindow.Started -= MainWindow_Started;
         MainWindow.OpenedBallsWindow -= MainWindow_OpenedBallsWindow;
-        MainWindow.OpenedSettingsWindow -= MainWindow_OpenedSettingsWindow;
-        BallsWindow.OpenedMainWindow -= BallsWindow_OpenedMainWindow;
+        MainWindow.MainWindowOpenedSettingsWindow -= OpenedSettingsWindow;
+        BallsWindow.BallsReturnedWindow -= ReturnedWindow;
         GameWindow.OpenedPauseWindow -= GameWindow_OpenedPauseWindow;
         PauseWindow.OpenedMainWindow -= PauseWindow_OpenedMainWindow;
         PauseWindow.OpenedBallsWindow -= PauseWindow_OpenedBallsWindow;
         PauseWindow.OpenedGameWindow -= PauseWindow_OpenedGameWindow;
-
+        PauseWindow.PauseWindowOpenedSettingsWindow -= OpenedSettingsWindow;
+        SettingsWindow.SettingsReturnedWindow -= ReturnedWindow;
     }
 
     private void Awake()
@@ -66,7 +69,7 @@ public class UIManager : MonoBehaviour
         ShowWindow<BallsWindow>();
     }
 
-    private void BallsWindow_OpenedMainWindow()
+    private void ReturnedWindow()
     {
         if (!isPaused)
         {
@@ -80,6 +83,7 @@ public class UIManager : MonoBehaviour
 
     private void GameWindow_OpenedPauseWindow()
     {
+        isPaused = true;
         ShowWindow<PauseWindow>();
     }
 
@@ -90,7 +94,6 @@ public class UIManager : MonoBehaviour
 
     private void PauseWindow_OpenedBallsWindow()
     {
-        isPaused = true;
         ShowWindow<BallsWindow>();
     }
 
@@ -99,8 +102,9 @@ public class UIManager : MonoBehaviour
         ShowWindow<GameWindow>();
     }
 
-    private void MainWindow_OpenedSettingsWindow()
+    private void OpenedSettingsWindow()
     {
+        
         ShowWindow<SettingsWindow>();
     }
 }

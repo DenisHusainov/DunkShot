@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public static event Action SpawnedHoop = delegate { };
+    public static event Action<Vector3> SpawnedHoop = delegate { };
 
     private Rigidbody2D rb;
 
@@ -51,5 +51,14 @@ public class Ball : MonoBehaviour
     private void InputManager_DesativatedRb()
     {
         DesactivateRb();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Net"))
+        {
+            SpawnedHoop(transform.position);
+            //collision.gameObject.SetActive(false);
+        }
     }
 }

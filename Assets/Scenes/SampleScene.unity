@@ -198,6 +198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 390763895}
+  - component: {fileID: 390763896}
   m_Layer: 0
   m_Name: Bounds
   m_TagString: Untagged
@@ -222,6 +223,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &390763896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390763894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d878aaa85ae1a4cf6ab65d3ca5a40fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ball: {fileID: 1057832362}
 --- !u!1 &499721844
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +319,10 @@ PrefabInstance:
     - target: {fileID: 5303704255572980068, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
       propertyPath: m_Offset.y
       value: 0.108057246
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979794693627902739, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8094572432957178711, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
       propertyPath: m_RootOrder
@@ -857,6 +875,10 @@ PrefabInstance:
       value: Net
       objectReference: {fileID: 0}
     - target: {fileID: 5303704255572980068, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979794693627902739, guid: 860329bb4f6064ed7a26674749ef2e75, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}

@@ -6,7 +6,7 @@ public class MainWindow : Window
 {
     public static event Action Started = delegate { };
     public static event Action OpenedBallsWindow = delegate { };
-    public static event Action OpenedSettingsWindow = delegate { };
+    public static event Action MainWindowOpenedSettingsWindow = delegate { };
     public static event Action ChangedDarkMode = delegate { };
 
     [SerializeField] private Button _startGameButton = null;
@@ -40,6 +40,6 @@ public class MainWindow : Window
 
     private void OnSettingsButtonClicked()
     {
-        OpenedSettingsWindow();
+        MainWindowOpenedSettingsWindow();
     }
 }

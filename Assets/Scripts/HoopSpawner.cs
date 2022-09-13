@@ -6,11 +6,24 @@ public class HoopSpawner : MonoBehaviour
     // Random conlict between using System and using UnityEngine
     public static event System.Action BallFlew = delegate { };
 
-    [SerializeField] private Vector3 _rightHoop = default;
-    [SerializeField] private Vector3 _leftHoop = default;
-
     private static List<GameObject> SpawnedHoops = new List<GameObject>();
     private static bool _isRigth = false;
+
+    [SerializeField] private GameObject _net = null;
+
+    private Vector3 _rightHoop = default;
+    private Vector3 _leftHoop = default;
+
+    private void OnEnable()
+    {
+        _net.SetActive(true);
+        Ball.SpawnedHoop += Ball_SpawnedHoop;
+    }
+
+    private void OnDisable()
+    {
+        Ball.SpawnedHoop -= Ball_SpawnedHoop;
+    }
 
     private void Start()
     {
@@ -48,24 +61,19 @@ public class HoopSpawner : MonoBehaviour
         _leftHoop.x = Random.Range(-1.4f, -0.4f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Ball_SpawnedHoop(Vector3 ballPosition)
     {
-        if (collision.gameObject.GetComponent<Ball>())
+        _net.SetActive(false);
+        var ballPos = ballPosition;
+        Spawner(ballPos);
+        BallFlew();
+        this.enabled = false;
+
+        if (SpawnedHoops.Count > 2)
         {
-            var ballPos = transform.position;
-            Spawner(ballPos);
-            BallFlew();
-        }
-
-        gameObject.SetActive(false);
-
-
-        if (SpawnedHoops.Count == 3)
-        {
+            SpawnedHoops[0].gameObject.GetComponent<HoopSpawner>().enabled = true;
             SpawnedHoops[0].gameObject.SetActive(false);
             SpawnedHoops.RemoveAt(0);
         }
     }
-
-
 }
