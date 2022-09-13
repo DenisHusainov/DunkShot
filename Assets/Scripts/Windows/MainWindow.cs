@@ -7,15 +7,16 @@ public class MainWindow : Window
     public static event Action Started = delegate { };
     public static event Action OpenedBallsWindow = delegate { };
     public static event Action OpenedSettingsWindow = delegate { };
+    public static event Action ChangedDarkMode = delegate { };
 
     [SerializeField] private Button _startGameButton = null;
     [SerializeField] private Button _changeBallsButton = null;
     [SerializeField] private Button _changeLightButton = null;
     [SerializeField] private Button _settingsButton = null;
 
-
     private void Start()
     {
+        
         _startGameButton.onClick.AddListener(OnStartGameButtonClicked);
         _changeBallsButton.onClick.AddListener(OnChangeBallsButtonClicked);
         _changeLightButton.onClick.AddListener(OnChangeLightButtonClicked);
@@ -34,7 +35,7 @@ public class MainWindow : Window
 
     private void OnChangeLightButtonClicked()
     {
-        //Change light
+        ChangedDarkMode();
     }
 
     private void OnSettingsButtonClicked()

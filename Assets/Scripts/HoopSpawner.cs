@@ -55,14 +55,17 @@ public class HoopSpawner : MonoBehaviour
             var ballPos = transform.position;
             Spawner(ballPos);
             BallFlew();
-
-            if (SpawnedHoops.Count == 3)
-            {
-                SpawnedHoops[0].gameObject.SetActive(false);
-                SpawnedHoops.RemoveAt(0);
-            }
         }
 
         gameObject.SetActive(false);
+
+
+        if (SpawnedHoops.Count == 3)
+        {
+            SpawnedHoops[0].gameObject.SetActive(false);
+            SpawnedHoops.RemoveAt(0);
+        }
     }
+
+
 }

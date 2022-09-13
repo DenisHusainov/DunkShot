@@ -1704,7 +1704,6 @@ MonoBehaviour:
   _mainWindowButton: {fileID: 1439021975}
   _ballsWindowButton: {fileID: 639885978}
   _resumeWindowButton: {fileID: 1269200282}
-  _backWindowButton: {fileID: 148208537}
 --- !u!114 &1260151394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,7 +1903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1364595176
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2444,6 +2443,7 @@ MonoBehaviour:
   _changeBallsButton: {fileID: 1088475987}
   _changeLightButton: {fileID: 1525072832}
   _settingsButton: {fileID: 1943224125}
+  _camera: {fileID: 1947601421}
 --- !u!1 &1525072830
 GameObject:
   m_ObjectHideFlags: 0
@@ -3100,7 +3100,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.89411765, g: 0.8980392, b: 0.73333335, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

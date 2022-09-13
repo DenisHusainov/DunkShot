@@ -46,12 +46,10 @@ public class Ball : MonoBehaviour
     private void InputManager_AtivatedRb()
     {
         ActivareRb();
-        this.enabled = false;
     }
 
     private void InputManager_DesativatedRb()
     {
         DesactivateRb();
-        this.enabled = true;
     }
 }

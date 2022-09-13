@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     private Window[] _windows;
 
-    public static bool isPaused { get; private set; }
+    public static bool isPaused = false;
 
     private void OnEnable()
     {
