@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8094572432957178711}
   - component: {fileID: 6979794693627902739}
+  - component: {fileID: 6960871433019924988}
   m_Layer: 0
   m_Name: Hoop
   m_TagString: Untagged
@@ -130,6 +131,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _net: {fileID: 3207227082089815277}
+--- !u!58 &6960871433019924988
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743541028292895046}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.15, y: -0.39}
+  serializedVersion: 2
+  m_Radius: 0.36
 --- !u!1 &3207227082089815277
 GameObject:
   m_ObjectHideFlags: 0

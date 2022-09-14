@@ -14,12 +14,12 @@ public class GameWindow : Window
 
     private void OnEnable()
     {
-        HoopSpawner.BallFlew += HoopSpawner_BallFlew;
+        HoopSpawner.BallFlewIn += HoopSpawner_BallFlewIn;
     }
 
     private void OnDisable()
     {
-        HoopSpawner.BallFlew -= HoopSpawner_BallFlew;
+        HoopSpawner.BallFlewIn -= HoopSpawner_BallFlewIn;
     }
 
     private void Start()
@@ -32,7 +32,7 @@ public class GameWindow : Window
         OpenedPauseWindow();
     }
 
-    private void HoopSpawner_BallFlew()
+    private void HoopSpawner_BallFlewIn()
     {
         _countPoint++;
         _score.text = _countPoint.ToString();

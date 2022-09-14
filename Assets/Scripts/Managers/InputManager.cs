@@ -10,6 +10,7 @@ public class InputManager : Singleton<InputManager>
     public static event Action<Vector3, Vector2> UpdatedDots = delegate { };
 
     [SerializeField] private float _pushForce = 4f;
+    [SerializeField] private Ball ball;
 
     private Camera _cam;
 
@@ -21,8 +22,6 @@ public class InputManager : Singleton<InputManager>
     private float _distance;
     private bool _isDragging = false;
 
-    public Ball ball;
-
     private void Start()
     {
         _cam = Camera.main;
@@ -31,12 +30,18 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!CanMove())
+        {
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0) && GameManager.Instance.IsFly == false)
         {
             _isDragging = true;
             OnDragStart();
         }
-        if (Input.GetMouseButtonUp(0))
+
+        if (Input.GetMouseButtonUp(0) && GameManager.Instance.IsFly == false)
         {
             _isDragging = false;
             OnDragEnd();
@@ -68,10 +73,17 @@ public class InputManager : Singleton<InputManager>
 
     private void OnDragEnd()
     {
+
         AtivatedRb();
 
         ball.Push(_force);
 
         HidedTrajectory();
+
+    }
+
+    private bool CanMove()
+    {
+        return GameManager.Instance.IsStarted && !GameManager.Instance.IsFinished;
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public static event Action<Vector3> SpawnedHoop = delegate { };
+    public static event Action BallFlew = delegate { };
+    public static event Action BallFlewOut = delegate { };
 
     private Rigidbody2D rb;
 
@@ -58,7 +60,19 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Net"))
         {
             SpawnedHoop(transform.position);
-            //collision.gameObject.SetActive(false);
+        }
+
+        if (collision.gameObject.GetComponent<HoopSpawner>())
+        {
+            BallFlew();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<HoopSpawner>())
+        {
+            BallFlewOut();
         }
     }
 }

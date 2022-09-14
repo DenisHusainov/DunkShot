@@ -4,7 +4,7 @@ using UnityEngine;
 public class HoopSpawner : MonoBehaviour
 {
     // Random conlict between using System and using UnityEngine
-    public static event System.Action BallFlew = delegate { };
+    public static event System.Action BallFlewIn = delegate { };
 
     private static List<GameObject> SpawnedHoops = new List<GameObject>();
     private static bool _isRigth = false;
@@ -66,7 +66,7 @@ public class HoopSpawner : MonoBehaviour
         _net.SetActive(false);
         var ballPos = ballPosition;
         Spawner(ballPos);
-        BallFlew();
+        BallFlewIn();
         this.enabled = false;
 
         if (SpawnedHoops.Count > 2)
