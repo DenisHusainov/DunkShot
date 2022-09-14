@@ -36,7 +36,9 @@ public class HoopSpawner : MonoBehaviour
         if (!_isRigth)
         {
             UpdateRightHoopPos();
-            var hoop = PoolManager.Instance.GetPooledObject(new Vector3(_leftHoop.x, ballPos.y + Random.Range(1.5f, 3f), ballPos.z), Quaternion.identity);
+            var hoop = PoolManager.Instance.GetPooledObject(
+                new Vector3(_leftHoop.x, ballPos.y + Random.Range(1.5f, 3f),
+                ballPos.z), Quaternion.identity);
             _isRigth = true;
             SpawnedHoops.Add(hoop);
             hoop.SetActive(true);
@@ -44,7 +46,9 @@ public class HoopSpawner : MonoBehaviour
         else
         {
             UpdateLeftHoopPos();
-            var hoop = PoolManager.Instance.GetPooledObject(new Vector3(_rightHoop.x, ballPos.y + Random.Range(1.5f, 3f), ballPos.z), Quaternion.identity);
+            var hoop = PoolManager.Instance.GetPooledObject(
+                new Vector3(_rightHoop.x, ballPos.y + Random.Range(1.5f, 3f),
+                ballPos.z), Quaternion.identity);
             _isRigth = false;
             SpawnedHoops.Add(hoop);
             hoop.SetActive(true);

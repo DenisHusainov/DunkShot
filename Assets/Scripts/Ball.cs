@@ -6,8 +6,9 @@ public class Ball : MonoBehaviour
     public static event Action<Vector3> SpawnedHoop = delegate { };
     public static event Action BallFlew = delegate { };
     public static event Action BallFlewOut = delegate { };
+    public static event Action GameOver = delegate { };
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rb = null;
 
     public Vector3 Pos { get { return transform.position; } }
 
@@ -65,6 +66,11 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.GetComponent<HoopSpawner>())
         {
             BallFlew();
+        }
+
+        if (collision.gameObject.GetComponent<CameraFollow>())
+        {
+            GameOver();
         }
     }
 

@@ -12,14 +12,14 @@ public class InputManager : Singleton<InputManager>
     [SerializeField] private float _pushForce = 4f;
     [SerializeField] private Ball ball;
 
-    private Camera _cam;
+    private Camera _cam = null;
 
-    private Vector2 _startPoint;
-    private Vector2 _endPoint;
-    private Vector2 _direction;
-    private Vector2 _force;
+    private Vector2 _startPoint = default;
+    private Vector2 _endPoint = default;
+    private Vector2 _direction = default;
+    private Vector2 _force = default;
 
-    private float _distance;
+    private float _distance = default;
     private bool _isDragging = false;
 
     private void Start()
@@ -73,13 +73,11 @@ public class InputManager : Singleton<InputManager>
 
     private void OnDragEnd()
     {
-
         AtivatedRb();
 
         ball.Push(_force);
 
         HidedTrajectory();
-
     }
 
     private bool CanMove()

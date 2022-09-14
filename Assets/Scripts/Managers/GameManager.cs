@@ -9,14 +9,15 @@ public class GameManager : Singleton<GameManager>
         MainWindow.Started += MainWindow_Started;
         Ball.BallFlew += InputManager_BallFlew;
         Ball.BallFlewOut += Ball_BallFlewOut;
+        Ball.GameOver += Ball_GameOver;
     }
-
 
     private void OnDisable()
     {
         MainWindow.Started -= MainWindow_Started;
         Ball.BallFlew -= InputManager_BallFlew;
         Ball.BallFlewOut -= Ball_BallFlewOut;
+        Ball.GameOver -= Ball_GameOver;
     }
 
     private void MainWindow_Started()
@@ -32,5 +33,10 @@ public class GameManager : Singleton<GameManager>
     private void Ball_BallFlewOut()
     {
         IsFly = true;
+    }
+
+    private void Ball_GameOver()
+    {
+        IsFinished = true;
     }
 }

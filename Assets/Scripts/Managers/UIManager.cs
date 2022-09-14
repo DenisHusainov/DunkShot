@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class UIManager : MonoBehaviour
         PauseWindow.OpenedGameWindow += PauseWindow_OpenedGameWindow;
         PauseWindow.PauseWindowOpenedSettingsWindow += OpenedSettingsWindow;
         SettingsWindow.SettingsReturnedWindow += ReturnedWindow;
-        
+        GameOverWindow.GameRestarted += GameOverWindow_GameRestarted;
     }
 
     private void OnDisable()
@@ -34,6 +35,8 @@ public class UIManager : MonoBehaviour
         PauseWindow.OpenedGameWindow -= PauseWindow_OpenedGameWindow;
         PauseWindow.PauseWindowOpenedSettingsWindow -= OpenedSettingsWindow;
         SettingsWindow.SettingsReturnedWindow -= ReturnedWindow;
+        GameOverWindow.GameRestarted -= GameOverWindow_GameRestarted;
+
     }
 
     private void Awake()
@@ -104,7 +107,11 @@ public class UIManager : MonoBehaviour
 
     private void OpenedSettingsWindow()
     {
-        
         ShowWindow<SettingsWindow>();
+    }
+
+    private void GameOverWindow_GameRestarted()
+    {
+        ShowWindow<GameOverWindow>();
     }
 }

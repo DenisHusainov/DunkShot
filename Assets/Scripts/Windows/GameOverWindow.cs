@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverWindow : Window
 {
-    // Start is called before the first frame update
-    void Start()
+    public static event Action GameRestarted = delegate { };
+
+    [SerializeField] private Button _restartButton = null;
+
+    private void Start()
     {
-        
+        _restartButton.onClick.AddListener(OnRestartButtonClicked);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnRestartButtonClicked()
     {
-        
+        GameRestarted();
     }
+
 }

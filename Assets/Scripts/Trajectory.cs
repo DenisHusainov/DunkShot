@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Trajectory : MonoBehaviour
 {
-    [SerializeField] private int _dotsNumber;
-    [SerializeField] private GameObject _dotsParent;
-    [SerializeField] private GameObject _dotPrefab;
-    [SerializeField] private float _dotSpacing;
-    [SerializeField] [Range(0.1f, 0.3f)] private float _dotMinScale;
-    [SerializeField] [Range(0.3f, 1f)] private float _dotMaxScale;
+    [SerializeField] private int _dotsNumber = default;
+    [SerializeField] private GameObject _dotsParent = null;
+    [SerializeField] private GameObject _dotPrefab = null;
+    [SerializeField] private float _dotSpacing = default;
+    [SerializeField] [Range(0.1f, 0.3f)] private float _dotMinScale = default;
+    [SerializeField] [Range(0.3f, 1f)] private float _dotMaxScale = default;
 
     private Vector2 _dotPos;
     private float _timeStamp;

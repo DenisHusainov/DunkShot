@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DarkMode : MonoBehaviour
 {
-    [SerializeField] private Camera _camera;
+    [SerializeField] private Camera _camera = null;
 
     private Color _darkMode = default;
     private Color _lightMode = default;
