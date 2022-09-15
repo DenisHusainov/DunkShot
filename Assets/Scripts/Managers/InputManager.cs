@@ -30,10 +30,6 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
-        if (!CanMove())
-        {
-            return;
-        }
 
         if (Input.GetMouseButtonDown(0) && GameManager.Instance.IsFly == false)
         {
@@ -50,6 +46,11 @@ public class InputManager : Singleton<InputManager>
         if (_isDragging)
         {
             OnDrag();
+        }
+
+        if (!CanMove())
+        {
+            return;
         }
     }
 
@@ -82,6 +83,6 @@ public class InputManager : Singleton<InputManager>
 
     private bool CanMove()
     {
-        return GameManager.Instance.IsStarted && !GameManager.Instance.IsFinished;
+        return GameManager.Instance.IsStarted && !GameManager.Instance.IsFinished && !UIManager.isPaused;
     }
 }

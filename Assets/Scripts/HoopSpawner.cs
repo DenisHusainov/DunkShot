@@ -27,6 +27,7 @@ public class HoopSpawner : MonoBehaviour
 
     private void Start()
     {
+        
         UpdateRightHoopPos();
         UpdateLeftHoopPos();
     }

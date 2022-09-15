@@ -6,7 +6,7 @@ public class UIManager : MonoBehaviour
 {
     private Window[] _windows;
 
-    public static bool isPaused = false;
+    public static bool isPaused { get; private set; }
 
     private void OnEnable()
     {
@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
         PauseWindow.PauseWindowOpenedSettingsWindow += OpenedSettingsWindow;
         SettingsWindow.SettingsReturnedWindow += ReturnedWindow;
         GameOverWindow.GameRestarted += GameOverWindow_GameRestarted;
+        Ball.GameOver += Ball_GameOver;
     }
 
     private void OnDisable()
@@ -36,7 +37,6 @@ public class UIManager : MonoBehaviour
         PauseWindow.PauseWindowOpenedSettingsWindow -= OpenedSettingsWindow;
         SettingsWindow.SettingsReturnedWindow -= ReturnedWindow;
         GameOverWindow.GameRestarted -= GameOverWindow_GameRestarted;
-
     }
 
     private void Awake()
@@ -93,6 +93,7 @@ public class UIManager : MonoBehaviour
     private void PauseWindow_OpenedMainWindow()
     {
         ShowWindow<MainWindow>();
+        ReloadScenes();
     }
 
     private void PauseWindow_OpenedBallsWindow()
@@ -102,6 +103,7 @@ public class UIManager : MonoBehaviour
 
     private void PauseWindow_OpenedGameWindow()
     {
+        isPaused = false;
         ShowWindow<GameWindow>();
     }
 
@@ -112,6 +114,19 @@ public class UIManager : MonoBehaviour
 
     private void GameOverWindow_GameRestarted()
     {
+        ShowWindow<GameWindow>();
+        ReloadScenes();
+    }
+
+    private void Ball_GameOver()
+    {
         ShowWindow<GameOverWindow>();
+    }
+
+    private void ReloadScenes()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadSceneAsync(StartupManager.UIScene);
+        SceneManager.LoadSceneAsync(StartupManager.TutorialLevel);
     }
 }

@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameObject.SetActive(true);
     }
 
     private void OnEnable()
@@ -63,22 +64,26 @@ public class Ball : MonoBehaviour
             SpawnedHoop(transform.position);
         }
 
-        if (collision.gameObject.GetComponent<HoopSpawner>())
+        if (collision.gameObject.CompareTag("Hoop"))
         {
             BallFlew();
-        }
-
-        if (collision.gameObject.GetComponent<CameraFollow>())
-        {
-            GameOver();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<HoopSpawner>())
+        if (collision.gameObject.CompareTag("Hoop"))
         {
             BallFlewOut();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<CameraFollow>())
+        {
+            gameObject.SetActive(false);
+            GameOver();
         }
     }
 }

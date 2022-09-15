@@ -38,5 +38,4 @@ public class AudioManager : MonoBehaviour
     {
         PlayAudio(_hitSound);
     }
-
 }

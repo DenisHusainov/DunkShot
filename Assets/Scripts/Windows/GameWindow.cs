@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameWindow : Window
 {
@@ -10,7 +11,7 @@ public class GameWindow : Window
     [SerializeField] private TextMeshProUGUI _score = null;
     [SerializeField] private Button _pauseButton = null;
 
-    private static int _countPoint = default;
+    private int _countPoint = default;
 
     private void OnEnable()
     {

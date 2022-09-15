@@ -1,3 +1,4 @@
+using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public bool IsStarted { get; private set; }
